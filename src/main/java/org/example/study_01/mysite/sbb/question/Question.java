@@ -1,8 +1,9 @@
-package org.example.study_01.mysite.sbb;
+package org.example.study_01.mysite.sbb.question;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.study_01.mysite.sbb.answer.Answer;
 
 import java.time.LocalDateTime;
 import java.util.List;
