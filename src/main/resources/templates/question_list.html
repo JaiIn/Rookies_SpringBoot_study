@@ -7,7 +7,13 @@
     </thead>
     <tbody>
     <tr th:each="question : ${questionList}">
-        <td th:text="${question.subject}"></td>
+        <!--<td th:text="${question.subject}"></td>-->
+
+        <!-- 제목에 상세 페이지 URL을 연결-->
+        <td>
+            <a th:href="@{|/question/detail/${question.id}|}"
+               th:text = "${question.subject}"></a>
+        </td>
         <td th:text="${question.createDate}"></td>
     </tr>
     </tbody>
