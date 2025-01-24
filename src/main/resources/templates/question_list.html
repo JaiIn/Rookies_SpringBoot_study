@@ -1,3 +1,4 @@
+
 <!--<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">-->
 <html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
 <div layout:fragment="content" class="container my-3">
@@ -12,6 +13,7 @@
         <tbody>
         <tr th:each="question, loop : ${questionList}">
             <td th:text="${loop.count}"></td>
+
         <!--<td th:text="${question.subject}"></td>-->
 
         <!-- 제목에 상세 페이지 URL을 연결-->
@@ -25,3 +27,4 @@
     <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
 </div>
 </html>
+

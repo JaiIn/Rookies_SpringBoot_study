@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 
 import org.example.study_01.mysite.sbb.answer.AnswerForm;
 
+
 @RequestMapping("/question") // 프리픽스
 @RequiredArgsConstructor
 @Controller
@@ -69,4 +70,5 @@ public class QuestionController {
         this.questionService.create(questionForm.getSubject(), questionForm.getContent());
         return "redirect:/question/list"; // 질문 저장후 질문목록으로 이동
     }
+
 }
