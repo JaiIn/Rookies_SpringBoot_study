@@ -10,6 +10,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
+
+import org.example.study_01.mysite.sbb.answer.AnswerForm;
+
+
 @RequestMapping("/question") // 프리픽스
 @RequiredArgsConstructor
 @Controller
@@ -39,10 +48,27 @@ public class QuestionController {
 
     // 2-10 질문 상세 페이지
     @GetMapping(value = "/detail/{id}")
-    public String questionDetail(Model model, @PathVariable("id") Integer id) {
+    public String questionDetail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
         // 특정 id에 해당하는 질문 조회
         Question question = this.questionService.getQuestion(id);
         model.addAttribute("question", question);
         return "question_detail";
     }
+
+    // 2-16 질문등록버튼 URL매핑
+    @GetMapping("/create")
+    public String questionCreate(QuestionForm questionForm) {
+        return "question_form";
+    }
+
+    @PostMapping("/create")
+    public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "question_form";
+        }
+        // TODO 질문을 저장한다.
+        this.questionService.create(questionForm.getSubject(), questionForm.getContent());
+        return "redirect:/question/list"; // 질문 저장후 질문목록으로 이동
+    }
+
 }
