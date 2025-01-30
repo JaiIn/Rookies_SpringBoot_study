@@ -4,10 +4,16 @@ import org.example.study_01.mysite.sbb.answer.Answer;
 import org.example.study_01.mysite.sbb.answer.AnswerRepository;
 import org.example.study_01.mysite.sbb.question.Question;
 import org.example.study_01.mysite.sbb.question.QuestionRepository;
+import org.example.study_01.mysite.sbb.question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation;
+import org.example.study_01.mysite.sbb.question.QuestionService;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,8 +34,11 @@ class Study01ApplicationTests {
     @Autowired
     private AnswerRepository answerRepository;
 
+    @Autowired
+    private QuestionService questionService;
+
     @Transactional
-    @Rollback(false)
+//    @Rollback(false)
     @Test
     void testJpa() {
         // 1.질문 데이터 저장하기
@@ -105,15 +114,15 @@ class Study01ApplicationTests {
 //        ---------------------------------------------------------
 
         // 9.답변 데이터 저장하기
-        Optional<Question> oq = this.questionRepository.findById(10);
-        assertTrue(oq.isPresent());
-        Question q = oq.get();
-
-        Answer a = new Answer();
-        a.setContent("네 자동으로 생성됩니다.");
-        a.setQuestion(q);  // 어떤 질문의 답변인지 알기위해서 Question 객체가 필요하다.
-        a.setCreateDate(LocalDateTime.now());
-        this.answerRepository.save(a);
+//        Optional<Question> oq = this.questionRepository.findById(10);
+//        assertTrue(oq.isPresent());
+//        Question q = oq.get();
+//
+//        Answer a = new Answer();
+//        a.setContent("네 자동으로 생성됩니다.");
+//        a.setQuestion(q);  // 어떤 질문의 답변인지 알기위해서 Question 객체가 필요하다.
+//        a.setCreateDate(LocalDateTime.now());
+//        this.answerRepository.save(a);
 
 //        ---------------------------------------------------------
 
@@ -126,16 +135,23 @@ class Study01ApplicationTests {
 //        ---------------------------------------------------------
 
 //      11.답변 데이터를 통해 질문 데이터 찾기 vs 질문 데이터를 통해 답변 데이터 찾기
+//
+//        Optional<Question> oq = this.questionRepository.findById(2);
+//        assertTrue(oq.isPresent());
+//        Question q = oq.get();
+//
+//        List<Answer> answerList = q.getAnswerList();
+//
+//        assertEquals(1, answerList.size());
+//        assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
 
-        Optional<Question> oq = this.questionRepository.findById(2);
-        assertTrue(oq.isPresent());
-        Question q = oq.get();
-
-        List<Answer> answerList = q.getAnswerList();
-
-        assertEquals(1, answerList.size());
-        assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
-
+//        --------------------------------------------------------------
+//        테스트 데이터 만들기
+         for (int i = 1; i <= 300; i++) {
+             String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용무";
+            this.questionService.create(subject, content);
+        }
     }
 }
 
