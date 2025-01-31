@@ -1,13 +1,16 @@
 package org.example.study_01.mysite.sbb.user;
 
 import jakarta.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @RequiredArgsConstructor
 @Controller
@@ -47,5 +50,10 @@ public class UserController {
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login_form";
     }
 }
