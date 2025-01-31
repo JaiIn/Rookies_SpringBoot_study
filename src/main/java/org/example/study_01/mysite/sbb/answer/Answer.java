@@ -8,6 +8,7 @@ import org.example.study_01.mysite.sbb.question.Question;
 import org.example.study_01.mysite.sbb.user.SiteUser;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,4 +32,7 @@ public class Answer {
     private SiteUser author;
 
     private LocalDateTime modifyDate;
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }
