@@ -3,6 +3,7 @@ package org.example.study_01.mysite.sbb.question;
 import lombok.RequiredArgsConstructor;
 import org.example.study_01.mysite.sbb.DataNotFoundException;
 import org.example.study_01.mysite.sbb.user.SiteUser;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -57,6 +58,7 @@ public class QuestionService {
         return this.questionRepository.findAll(pageable);
     }
 
+
     public void modify(Question question, String subject, String content) {
         question.setSubject(subject);
         question.setContent(content);
@@ -73,3 +75,4 @@ public class QuestionService {
         this.questionRepository.save(question);
     }
 }
+

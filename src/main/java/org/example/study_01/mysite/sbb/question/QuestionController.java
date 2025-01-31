@@ -28,6 +28,7 @@ import org.example.study_01.mysite.sbb.answer.AnswerForm;
 import org.springframework.web.server.ResponseStatusException;
 
 
+
 @RequestMapping("/question") // 프리픽스
 @RequiredArgsConstructor
 @Controller
@@ -88,6 +89,7 @@ public class QuestionController {
         return "redirect:/question/list"; // 질문 저장후 질문목록으로 이동
     }
 
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/modify/{id}")
     public String questionModify(QuestionForm questionForm, @PathVariable("id") Integer id, Principal principal) {
@@ -135,3 +137,5 @@ public class QuestionController {
         return String.format("redirect:/question/detail/%s", id);
     }
 }
+}
+

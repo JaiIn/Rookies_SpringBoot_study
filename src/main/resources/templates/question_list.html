@@ -12,6 +12,7 @@
         </tr>
         </thead>
         <tbody>
+
         <tr class="text-center" th:each="question, loop : ${paging}">
             <!--        <td th:text="${loop.count}"></td>-->
             <!--3-3. 게시물에 번호 지정하기-->
@@ -34,6 +35,7 @@
         </tr>
         </tbody>
     </table>
+
     <!-- 페이징처리 시작 -->
     <div th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
@@ -60,3 +62,4 @@
     <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
 </div>
 </html>
+
