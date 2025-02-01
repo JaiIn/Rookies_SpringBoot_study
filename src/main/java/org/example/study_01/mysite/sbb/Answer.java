@@ -19,9 +19,9 @@ public class Answer {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    private LocalDateTime date;
+    private LocalDateTime createDate;
 
     @ManyToOne
-    @JoinColumn(name = "question_id")
+//    @JoinColumn(name = "question_id")
     private Question question;
 }
