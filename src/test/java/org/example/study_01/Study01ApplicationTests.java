@@ -1,15 +1,14 @@
 package org.example.study_01;
 
-import org.example.study_01.mysite.sbb.Answer;
-import org.example.study_01.mysite.sbb.AnswerRepository;
-import org.example.study_01.mysite.sbb.Question;
-import org.example.study_01.mysite.sbb.QuestionRepository;
+import org.example.study_01.mysite.sbb.answer.Answer;
+import org.example.study_01.mysite.sbb.answer.AnswerRepository;
+import org.example.study_01.mysite.sbb.question.Question;
+import org.example.study_01.mysite.sbb.question.QuestionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
