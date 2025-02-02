@@ -6,9 +6,11 @@ import lombok.Setter;
 import org.example.study_01.mysite.sbb.answer.Answer;
 import org.example.study_01.mysite.sbb.user.SiteUser;
 
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -32,4 +34,7 @@ public class Question {
 
     @ManyToOne
     private SiteUser author;
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }
