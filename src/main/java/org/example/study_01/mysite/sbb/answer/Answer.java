@@ -7,8 +7,6 @@ import lombok.Setter;
 import org.example.study_01.mysite.sbb.question.Question;
 import org.example.study_01.mysite.sbb.user.SiteUser;
 
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -25,7 +23,6 @@ public class Answer {
     private String content;
 
     private LocalDateTime createDate;
-    private LocalDateTime modifyDate;
 
     @ManyToOne
 //    @JoinColumn(name = "question_id")
@@ -33,6 +30,8 @@ public class Answer {
 
     @ManyToOne
     private SiteUser author;
+
+    private LocalDateTime modifyDate;
 
     @ManyToMany
     Set<SiteUser> voter;

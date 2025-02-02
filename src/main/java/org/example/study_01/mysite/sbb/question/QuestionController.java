@@ -22,7 +22,7 @@ import org.example.study_01.mysite.sbb.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-@RequestMapping("/question")
+@RequestMapping("/question") // 프리픽스
 @RequiredArgsConstructor
 @Controller
 public class QuestionController {
@@ -30,13 +30,17 @@ public class QuestionController {
     private final QuestionService questionService;
     private final UserService userService;
 
-    @GetMapping("/list")
+    // 2-9 질문 목록 반환
+    @GetMapping("/list") // question 빼고 뒷 부분만
     public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+
+        // 3-2 페이지 처리
         Page<Question> paging = this.questionService.getList(page);
         model.addAttribute("paging", paging);
         return "question_list";
     }
 
+    // 2-10 질문 상세 페이지
     @GetMapping(value = "/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id, AnswerForm answerForm) {
         Question question = this.questionService.getQuestion(id);
@@ -44,6 +48,7 @@ public class QuestionController {
         return "question_detail";
     }
 
+    // 2-16 질문 등록 버튼 URL 매핑
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String questionCreate(QuestionForm questionForm) {

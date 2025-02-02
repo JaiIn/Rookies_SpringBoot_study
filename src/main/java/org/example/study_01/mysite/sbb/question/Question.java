@@ -6,8 +6,6 @@ import lombok.Setter;
 import org.example.study_01.mysite.sbb.answer.Answer;
 import org.example.study_01.mysite.sbb.user.SiteUser;
 
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -18,7 +16,7 @@ import java.util.Set;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(length = 200)
     private String subject;
@@ -27,13 +25,14 @@ public class Question {
     private String content;
 
     private LocalDateTime createDate;
-    private LocalDateTime modifyDate;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
 
     @ManyToOne
     private SiteUser author;
+
+    private LocalDateTime modifyDate;
 
     @ManyToMany
     Set<SiteUser> voter;
