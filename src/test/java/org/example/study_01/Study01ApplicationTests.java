@@ -5,25 +5,18 @@ import org.example.study_01.mysite.sbb.answer.AnswerRepository;
 import org.example.study_01.mysite.sbb.question.Question;
 import org.example.study_01.mysite.sbb.question.QuestionRepository;
 import org.example.study_01.mysite.sbb.question.QuestionService;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.example.study_01.mysite.sbb.question.QuestionService;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
-import java.time.LocalDateTime;
+//import java.time.LocalDateTime;
+//import java.util.List;
+//import java.util.Optional;
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class Study01ApplicationTests {
@@ -37,8 +30,7 @@ class Study01ApplicationTests {
     @Autowired
     private QuestionService questionService;
 
-    @Transactional
-//    @Rollback(false)
+//    @Transactional
     @Test
     void testJpa() {
         // 1.질문 데이터 저장하기
@@ -55,11 +47,10 @@ class Study01ApplicationTests {
 
 //        ---------------------------------------------------------
 
-//        2.findAll 메서드
+        // 2.findAll 메서드
 //        List<Question> all = this.questionRepository.findAll();
 //        assertEquals(2, all.size());
-
-
+//
 //        Question q = all.get(0);
 //        assertEquals("sbb가 무엇인가요?", q.getSubject());
 
@@ -76,7 +67,7 @@ class Study01ApplicationTests {
 
         // 4.findBySubject 메서드 <- QuestionRepository.java 수정, application.properties 수정
 //        Question q = this.questionRepository.findBySubject("sbb가 무엇인가요?");
-//        assertEquals(1, q.getId())
+//        assertEquals(1, q.getId());
 
 //        ---------------------------------------------------------
 
@@ -114,10 +105,10 @@ class Study01ApplicationTests {
 //        ---------------------------------------------------------
 
         // 9.답변 데이터 저장하기
-//        Optional<Question> oq = this.questionRepository.findById(10);
+//        Optional<Question> oq = this.questionRepository.findById(2);
 //        assertTrue(oq.isPresent());
 //        Question q = oq.get();
-
+//
 //        Answer a = new Answer();
 //        a.setContent("네 자동으로 생성됩니다.");
 //        a.setQuestion(q);  // 어떤 질문의 답변인지 알기위해서 Question 객체가 필요하다.
@@ -126,7 +117,7 @@ class Study01ApplicationTests {
 
 //        ---------------------------------------------------------
 
-//        10.답변 데이터 조회하기
+        // 10.답변 데이터 조회하기
 //        Optional<Answer> oa = this.answerRepository.findById(1);
 //        assertTrue(oa.isPresent());
 //        Answer a = oa.get();
@@ -134,8 +125,7 @@ class Study01ApplicationTests {
 
 //        ---------------------------------------------------------
 
-//      11.답변 데이터를 통해 질문 데이터 찾기 vs 질문 데이터를 통해 답변 데이터 찾기
-//
+        // 11.답변 데이터를 통해 질문 데이터 찾기 vs 질문 데이터를 통해 답변 데이터 찾기
 //        Optional<Question> oq = this.questionRepository.findById(2);
 //        assertTrue(oq.isPresent());
 //        Question q = oq.get();
@@ -145,13 +135,13 @@ class Study01ApplicationTests {
 //        assertEquals(1, answerList.size());
 //        assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
 
-        // 12. 테스트데이터
+//        ---------------------------------------------------------
+
+        // 12.테스트 데이터
 //        for (int i = 1; i <= 300; i++) {
 //            String subject = String.format("테스트 데이터입니다:[%03d]", i);
 //            String content = "내용무";
 //            this.questionService.create(subject, content, null);
 //        }
-
     }
 }
-

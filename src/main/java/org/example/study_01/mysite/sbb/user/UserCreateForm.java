@@ -26,4 +26,3 @@ public class UserCreateForm {
     @Email
     private String email;
 }
-

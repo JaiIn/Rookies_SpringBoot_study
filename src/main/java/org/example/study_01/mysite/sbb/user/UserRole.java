@@ -2,7 +2,6 @@ package org.example.study_01.mysite.sbb.user;
 
 import lombok.Getter;
 
-
 @Getter
 public enum UserRole {
     ADMIN("ROLE_ADMIN"),

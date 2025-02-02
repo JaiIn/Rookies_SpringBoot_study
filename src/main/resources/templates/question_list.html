@@ -1,9 +1,7 @@
-
 <!--<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">-->
 <html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
 <div layout:fragment="content" class="container my-3">
     <table class="table">
-        <thead class="table-dark">
         <tr class="text-center">
             <th>번호</th>
             <th style="width:50%">제목</th>
@@ -12,30 +10,20 @@
         </tr>
         </thead>
         <tbody>
-
         <tr class="text-center" th:each="question, loop : ${paging}">
-            <!--        <td th:text="${loop.count}"></td>-->
-            <!--3-3. 게시물에 번호 지정하기-->
             <td th:text="${paging.getTotalElements - (paging.number * paging.size) - loop.index}"></td>
-
-
-            <!--<td th:text="${question.subject}"></td>-->
-
-            <!-- 제목에 상세 페이지 URL을 연결-->
             <td class="text-start">
                 <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
-                <!--댓글 갯수 달기-->
                 <span class="text-danger small ms-2"
                       th:if="${#lists.size(question.answerList) > 0}"
                       th:text="${#lists.size(question.answerList)}">
-            </span>
+                </span>
             </td>
             <td><span th:if="${question.author != null}" th:text="${question.author.username}"></span></td>
             <td th:text="${#temporals.format(question.createDate, 'yyyy-MM-dd HH:mm')}"></td>
         </tr>
         </tbody>
     </table>
-
     <!-- 페이징처리 시작 -->
     <div th:if="${!paging.isEmpty()}">
         <ul class="pagination justify-content-center">
@@ -62,4 +50,3 @@
     <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
 </div>
 </html>
-
