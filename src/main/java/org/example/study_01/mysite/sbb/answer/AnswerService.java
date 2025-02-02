@@ -1,13 +1,15 @@
 package org.example.study_01.mysite.sbb.answer;
 
-import lombok.RequiredArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import org.example.study_01.mysite.sbb.DataNotFoundException;
 import org.example.study_01.mysite.sbb.question.Question;
 import org.example.study_01.mysite.sbb.user.SiteUser;
-import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
@@ -15,13 +17,14 @@ public class AnswerService {
 
     private final AnswerRepository answerRepository;
 
-    public void create(Question question, String content, SiteUser author) {
+    public Answer create(Question question, String content, SiteUser author) {
         Answer answer = new Answer();
         answer.setContent(content);
-        answer.setAuthor(author);
         answer.setCreateDate(LocalDateTime.now());
         answer.setQuestion(question);
+        answer.setAuthor(author);
         this.answerRepository.save(answer);
+        return answer;
     }
 
     public Answer getAnswer(Integer id) {
