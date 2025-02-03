@@ -2,6 +2,7 @@ package org.example.study_01;
 
 import org.example.study_01.mysite.sbb.answer.Answer;
 import org.example.study_01.mysite.sbb.answer.AnswerRepository;
+import org.example.study_01.mysite.sbb.answer.AnswerService;
 import org.example.study_01.mysite.sbb.question.Question;
 import org.example.study_01.mysite.sbb.question.QuestionRepository;
 import org.example.study_01.mysite.sbb.question.QuestionService;
@@ -29,6 +30,9 @@ class Study01ApplicationTests {
 
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private AnswerService answerService;
 
 //    @Transactional
     @Test
@@ -142,6 +146,16 @@ class Study01ApplicationTests {
 //            String subject = String.format("테스트 데이터입니다:[%03d]", i);
 //            String content = "내용무";
 //            this.questionService.create(subject, content, null);
+//        }
+
+//        -----------------------------------------------------------
+
+        // 13. 테스트 데이터- 답변
+//        for (int i=1; i<=20; i++){
+//            Question question = this.questionRepository.findById(2)
+//                    .orElseThrow(() -> new IllegalArgumentException("해당 ID의 질문이 존재하지 않습니다."));
+//            String content = String.format("테스트 답변[%02d]", i);
+//            this.answerService.create(question, content, null);
 //        }
     }
 }
