@@ -32,11 +32,13 @@ public class QuestionController {
 
     // 2-9 질문 목록 반환
     @GetMapping("/list") // question 빼고 뒷 부분만
-    public String list(Model model, @RequestParam(value="page", defaultValue="0") int page) {
+    public String list(Model model, @RequestParam(value="page", defaultValue="0") int page,
+                       @RequestParam(value="kw", defaultValue = "") String kw) {
 
         // 3-2 페이지 처리
-        Page<Question> paging = this.questionService.getList(page);
+        Page<Question> paging = this.questionService.getList(page, kw);
         model.addAttribute("paging", paging);
+        model.addAttribute("kw", kw);
         return "question_list";
     }
 

@@ -3,6 +3,11 @@ package org.example.study_01.mysite.sbb.answer;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import org.example.study_01.mysite.sbb.question.QuestionRepository;
+import org.example.study_01.mysite.sbb.question.QuestionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import org.example.study_01.mysite.sbb.DataNotFoundException;
@@ -16,6 +21,8 @@ import lombok.RequiredArgsConstructor;
 public class AnswerService {
 
     private final AnswerRepository answerRepository;
+    private final QuestionRepository questionRepository;
+    private final QuestionService questionService;
 
     public Answer create(Question question, String content, SiteUser author) {
         Answer answer = new Answer();
@@ -34,6 +41,12 @@ public class AnswerService {
         } else {
             throw new DataNotFoundException("answer not found");
         }
+    }
+
+    public Page<Answer> getList(Integer questionId, int page){
+        Question question = questionService.getQuestion(questionId);
+        Pageable pageable = PageRequest.of(page, 5);
+        return this.answerRepository.findByQuestion(question, pageable);
     }
 
     public void modify(Answer answer, String content) {
